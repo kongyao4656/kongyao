@@ -23,14 +23,14 @@ testY = dataSet[trainNum:, -4:]
 #模型构建
 model = Sequential()
 model.add(Dense(units=16, input_dim=trainX.shape[1], activation='tanh'))
-model.add(Dropout(0.2))
+model.add(Dropout(0.4))
 model.add(Dense(units=32,activation='tanh'))
-model.add(Dropout(0.2))
+model.add(Dropout(0.4))
 model.add(Dense(units=4, activation='softmax'))
 optim = keras.optimizers.Adam(lr=0.001)
-model.compile(optim,loss=keras.losses.CategoricalCrossentropy(),metrics=['mae','acc'])
+model.compile(optim,loss=keras.losses.BinaryCrossentropy(),metrics=['mae','acc'])
 model.summary()
-result = model.fit(trainX,trainY,batch_size=32,epochs=40,validation_data=(testX,testY))
+result = model.fit(trainX,trainY,batch_size=32,epochs=20,validation_data=(testX,testY))
 
 #display
 plt.figure()
