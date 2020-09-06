@@ -9,7 +9,7 @@ np实现对数几率回归，总结要点：
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold
 
 class LogisticRess():
     def __init__(self, epoch, lr, loss_value):
@@ -69,6 +69,7 @@ class LogisticRess():
             else:
                 bad += 1
         print('预测准确率为：{}'.format(bingo/len(diff)))
+        return bingo/len(diff)
 if __name__ == '__main__':
     dta = pd.read_csv('../data/ranked_10min.csv')
     colulist = dta.columns.tolist()
@@ -86,11 +87,17 @@ if __name__ == '__main__':
     dta.drop(columns=['blueWins'], inplace=True)
     Features = dta.values
 
-    trainx, testx, trainy, testy = train_test_split(Features, Label, test_size=0.2)
+    # trainx, testx, trainy, testy = train_test_split(Features, Label, test_size=0.2)
     epoch = 10
     lr = 0.001
     loss_value = 0.00001
-    LogisticCls = LogisticRess(epoch, lr, loss_value)
-    LogisticCls.fit(trainx, trainy)
-    LogisticCls.score(testx,testy)
-
+    kf = KFold(n_splits=10)
+    scorelist = []
+    for train_index, test_index in kf.split(Features):
+        #print("train_index:{}, test_index:{}".format(train_index, test_index))
+        trainx, testx = Features[train_index], Features[test_index]
+        trainy, testy = Label[train_index], Label[test_index]
+        LogisticCls = LogisticRess(epoch, lr, loss_value)
+        LogisticCls.fit(trainx, trainy)
+        scorelist.append(LogisticCls.score(testx,testy))
+    print("精度为:{}".format(np.array(scorelist).mean()))

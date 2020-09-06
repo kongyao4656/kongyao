@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="103a27b2-4d40-4fa0-b376-dab6e1507b9c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/numpy实现机器学习算法/LDA线性判别分析.py" beforeDir="false" afterPath="$PROJECT_DIR$/numpy实现机器学习算法/LDA线性判别分析.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py" beforeDir="false" afterPath="$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,11 +94,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1632">
-              <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+            <state relative-caret-position="498">
+              <caret line="101" column="56" selection-start-line="101" selection-start-column="56" selection-end-line="101" selection-end-column="56" />
+              <folding>
+                <element signature="e#283#301#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -114,7 +118,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/numpy实现机器学习算法/LDA线性判别分析.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="416">
@@ -141,10 +145,10 @@
         <option value="$PROJECT_DIR$/文件说明.md" />
         <option value="$PROJECT_DIR$/machineLearning/机器学习_LOL数据集.py" />
         <option value="$PROJECT_DIR$/timeSeries/DTWtest.py" />
-        <option value="$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py" />
         <option value="$PROJECT_DIR$/numpy实现机器学习算法/LinearRegression.py" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/numpy实现机器学习算法/LDA线性判别分析.py" />
+        <option value="$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py" />
       </list>
     </option>
   </component>
@@ -200,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.LDA线性判别分析">
+  <component name="RunManager" selected="Python.LogisticRegression">
     <configuration name="机器学习预测1" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="kaggle" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -308,8 +312,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.LDA线性判别分析" />
         <item itemvalue="Python.LogisticRegression" />
+        <item itemvalue="Python.LDA线性判别分析" />
         <item itemvalue="Python.DTWtest" />
         <item itemvalue="Python.机器学习_LOL数据集" />
         <item itemvalue="Python.机器学习预测1" />
@@ -435,13 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -458,6 +455,16 @@
           <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/numpy实现机器学习算法/LogisticRegression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="101" column="56" selection-start-line="101" selection-start-column="56" selection-end-line="101" selection-end-column="56" />
+          <folding>
+            <element signature="e#283#301#0" expanded="true" />
           </folding>
         </state>
       </provider>
