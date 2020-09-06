@@ -32,10 +32,17 @@ class LDA():
         print(np.mat(Sw).I)
         self.w  = np.dot(np.mat(Sw).I, miu1 - miu2)
 
+        x1_new = np.dot(X1, self.w.T)
+        x2_new = np.dot(X2, self.w.T)
+        y1_new = [1 for i in range(len(X1))]
+        y2_new = [0 for i in range(len(X2))]
+        return x1_new,x2_new,y1_new,y2_new
+
     def predict(self, X):
         resultArray = []
         for i in range(len(X)):
             resultArray.append(np.dot(self.w, X[i]))
+        print(resultArray)
         return np.array(resultArray)
 
     def score(self,X,Y):
@@ -44,7 +51,6 @@ class LDA():
         bingo = 0
         bad = 0
         for number in y_diff[0][0]:
-            print(number)
             if int(number) == 0:
                 bingo += 1
             else:
@@ -52,37 +58,42 @@ class LDA():
         print("LDA分类的准确率为:{}".format(bingo/len(y_diff)))
 
 if __name__ == "__main__":
-    # dta = pd.read_csv('../data/ranked_10min.csv')
-    # colulist = dta.columns.tolist()
-    # print(colulist)
-    #
-    # dta['GoldMinDiff'] = dta['blueGoldPerMin'] - dta['redGoldPerMin']
-    # dta['CSDiff'] = dta['blueCSPerMin'] - dta['redCSPerMin']
-    # dta.drop(columns=['gameId', 'blueWardsPlaced', 'blueWardsDestroyed', 'blueTotalGold', 'blueTotalExperience',
-    #                   'redWardsPlaced', 'redWardsDestroyed', 'redKills', 'redDeaths', 'redTotalGold',
-    #                   'redTotalExperience', 'redGoldDiff', 'redExperienceDiff', 'blueGoldPerMin', 'redGoldPerMin',
-    #                   'blueCSPerMin', 'redCSPerMin'], inplace=True)
-    #
-    # # 划分训练集和测试集
-    # Label = dta['blueWins'].values
-    # dta.drop(columns=['blueWins'], inplace=True)
-    # Features = dta.values
-    #
-    # trainx, testx, trainy, testy = train_test_split(Features, Label, test_size=0.2)
+    dta = pd.read_csv('../data/ranked_10min.csv')
+    colulist = dta.columns.tolist()
+    print(colulist)
+
+    dta['GoldMinDiff'] = dta['blueGoldPerMin'] - dta['redGoldPerMin']
+    dta['CSDiff'] = dta['blueCSPerMin'] - dta['redCSPerMin']
+    dta.drop(columns=['gameId', 'blueWardsPlaced', 'blueWardsDestroyed', 'blueTotalGold', 'blueTotalExperience',
+                      'redWardsPlaced', 'redWardsDestroyed', 'redKills', 'redDeaths', 'redTotalGold',
+                      'redTotalExperience', 'redGoldDiff', 'redExperienceDiff', 'blueGoldPerMin', 'redGoldPerMin',
+                      'blueCSPerMin', 'redCSPerMin'], inplace=True)
+
+    # 划分训练集和测试集
+    Label = dta['blueWins'].values
+    dta.drop(columns=['blueWins'], inplace=True)
+    Features = dta.values
+
+    trainx, testx, trainy, testy = train_test_split(Features, Label, test_size=0.2)
+    cls = LDA()
+    X1_new, X2_new, y1_new, y2_new = cls.fit(trainx,trainy)
+    cls.score(testx,testy)
+    plt.figure()
+    plt.plot(X1_new, y1_new, 'bo')
+    plt.plot(X2_new, y2_new, 'ro')
+    plt.show()
 
     # X, y = make_classification(n_samples=500, n_features=2, n_redundant=0, n_classes=2,
     #                            n_informative=1, n_clusters_per_class=1, class_sep=0.5, random_state=10)
-    X, y = make_classification(n_samples=500, n_features=2, n_redundant=0, n_classes=2,
-                               n_informative=1, n_clusters_per_class=1, class_sep=0.5, random_state=10)
-
-    X1_new, X2_new, y1_new, y2_new = LDA(X, y)
-
-    # 可视化原始数据
-    plt.scatter(X[:, 0], X[:, 1], marker='o', c=y)
-    plt.show()
-    cls = LDA()
-    cls.fit(trainx, trainy)
-    cls.score(testx,testy)
+    # cls = LDA()
+    # X1_new, X2_new, y1_new, y2_new = cls.fit(X, y)
+    # # 可视化原始数据
+    # plt.figure()
+    # plt.scatter(X[:, 0], X[:, 1], marker='o', c=y)
+    # plt.figure()
+    # plt.plot(X1_new, y1_new, 'bo')
+    # plt.plot(X2_new, y2_new, 'ro')
+    # plt.show()
 
 
 
